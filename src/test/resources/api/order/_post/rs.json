@@ -1,0 +1,8 @@
+{
+  "id": "skip",
+  "petId": 0,
+  "quantity":0,
+  "shipDate":"2023-07-15T12:52:45.093+0000",
+  <#if status??>"status": "${status}",</#if>
+  "complete":true
+}
