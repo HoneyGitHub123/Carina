@@ -9,15 +9,17 @@ import com.zebrunner.carina.api.http.HttpMethodType;
 import com.zebrunner.carina.api.http.HttpResponseStatusType;
 import com.zebrunner.carina.utils.config.Configuration;
 
-@Endpoint(url = "${base_url}/order/9175162641476893171", methodType = HttpMethodType.DELETE)
+@Endpoint(url = "${base_url}/order/${order_no}", methodType = HttpMethodType.DELETE)
 @RequestTemplatePath(path = "api/order/_delete/rq.json")
 @ResponseTemplatePath(path = "api/order/_delete/rs.json")
 @SuccessfulHttpStatus(status = HttpResponseStatusType.OK_200)
 public class DeleteOrderMethod extends AbstractApiMethodV2 {
 
 
-    public DeleteOrderMethod() {
+    public DeleteOrderMethod(String orderNo) {
         replaceUrlPlaceholder("base_url", Configuration.getRequired("api_url"));
+        replaceUrlPlaceholder("order_no", orderNo);
+
 
     }
 }

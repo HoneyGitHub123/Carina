@@ -2,11 +2,11 @@ package com.company.carina.demo;
 
 import com.company.carina.demo.api.DeleteOrderMethod;
 import com.company.carina.demo.api.GetOrderMethod;
+import com.company.carina.demo.api.service.OrderService;
 import com.company.carina.demo.api.PostOrderMethod;
 import com.zebrunner.carina.api.apitools.validation.JsonCompareKeywords;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
-import dev.failsafe.internal.util.Assert;
 import io.restassured.response.Response;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.slf4j.Logger;
@@ -32,6 +32,8 @@ public class APIDemoTest implements IAbstractTest {
         LOGGER.info(id);
         //validate the response
         api.validateResponse();
+
+
     }
 
     @Test()
@@ -52,22 +54,21 @@ public class APIDemoTest implements IAbstractTest {
     @MethodOwner(owner = "apidemo")
     public void testGetOrder() {
         LOGGER.info("GET REQUEST");
-        GetOrderMethod getOrderMethod = new GetOrderMethod();
+        GetOrderMethod getOrderMethod = new GetOrderMethod(OrderService.getOrderByOrderNo());
         getOrderMethod.setProperties("api/order/order.properties");
         Response response = getOrderMethod.callAPIExpectSuccess();
-        String id = response.jsonPath().getString("id");
-        LOGGER.info(id);
         getOrderMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
         //validate the schema
         LOGGER.info("Checking Json Schema");
         getOrderMethod.validateResponseAgainstSchema("api/order/_get/rs.schema");
     }
 
-    @Test()
+
+   @Test()
     @MethodOwner(owner = "apidemo")
     public void testDeleteOrder() {
         LOGGER.info("DELETE REQUEST");
-        DeleteOrderMethod deleteOrderMethod = new DeleteOrderMethod();
+        DeleteOrderMethod deleteOrderMethod = new DeleteOrderMethod(OrderService.getOrderByOrderNo());
         deleteOrderMethod.setProperties("api/order/order.properties");
         //Sending request to delete record
         Response response = deleteOrderMethod.callAPIExpectSuccess();
@@ -75,6 +76,7 @@ public class APIDemoTest implements IAbstractTest {
         LOGGER.info("Deleted Order id :" + id);
         deleteOrderMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }
+
 
 }
 
