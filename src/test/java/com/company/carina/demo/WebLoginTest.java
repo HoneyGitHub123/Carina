@@ -1,6 +1,7 @@
 package com.company.carina.demo;
 
 
+import com.company.carina.demo.gui.components.LoginWindow;
 import com.company.carina.demo.gui.pages.common.LoginPageBase;
 import com.company.carina.demo.gui.pages.desktop.LoginPage;
 import com.zebrunner.carina.core.IAbstractTest;
@@ -17,9 +18,12 @@ public class WebLoginTest implements IAbstractTest {
         LoginPageBase loginPage = new LoginPage(getDriver());
         loginPage.open();
         loginPage.clickLoginLink();
-        loginPage.getLoginWindow().enterEmail(email);
-        loginPage.getLoginWindow().enterPassword(password);
-        loginPage.getLoginWindow().clickLoginButton();
+        LoginWindow loginWindow=loginPage.getLoginWindow();
+        //checking whether login window is displayed
+        Assert.assertTrue(loginWindow.isUIObjectPresent(),"Login Window is not displayed");
+        loginWindow.enterEmail(email);
+        loginWindow.enterPassword(password);
+        loginWindow.clickLoginButton();
         String actualMessage = loginPage.getMessage();
         System.out.println(actualMessage);
         SoftAssert softAssert = new SoftAssert();

@@ -27,7 +27,7 @@ public class LoginPage extends LoginPageBase {
         super(driver);
 
     }
-
+    @Override
     public void clickLoginLink() {
         loginLink.click();
     }
@@ -38,6 +38,7 @@ public class LoginPage extends LoginPageBase {
 
     }
 
+    @Override
     public String getMessage() {
         return message.getText();
     }
