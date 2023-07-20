@@ -1,9 +1,11 @@
 package com.company.carina.demo;
 
 
+import com.company.carina.demo.gui.pages.common.LoginPageBase;
 import com.company.carina.demo.gui.pages.desktop.LoginPage;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,7 +14,7 @@ public class WebLoginTest implements IAbstractTest {
     @Test(dataProvider = "TestData1")
     @MethodOwner(owner = "webdemo")
     public void loginTest(String email, String password, String expectedMessage) {
-        LoginPage loginPage = new LoginPage(getDriver());
+        LoginPageBase loginPage = new LoginPage(getDriver());
         loginPage.open();
         loginPage.clickLoginLink();
         loginPage.getLoginWindow().enterEmail(email);

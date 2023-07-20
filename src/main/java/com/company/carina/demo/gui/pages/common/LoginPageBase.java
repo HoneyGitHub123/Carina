@@ -14,9 +14,12 @@ public abstract class LoginPageBase extends AbstractPage {
 
     }
 
+    public abstract void clickLoginLink();
+
     public abstract LoginWindow getLoginWindow();
 
     public abstract String getMessage();
+
 
     @Override
     public void open() {
