@@ -26,6 +26,7 @@ public class LoginPage extends LoginPageBase {
     public LoginPage(WebDriver driver) {
         super(driver);
 
+
     }
     @Override
     public void clickLoginLink() {

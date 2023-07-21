@@ -23,11 +23,12 @@ public class WebLoginTest implements IAbstractTest {
         Assert.assertTrue(loginWindow.isUIObjectPresent(),"Login Window is not displayed");
         loginWindow.enterEmail(email);
         loginWindow.enterPassword(password);
-        loginWindow.clickLoginButton();
-        String actualMessage = loginPage.getMessage();
+        //loginWindow.clickLoginButton();
+        String actualMessage = loginWindow.clickLoginButton().getMessage();
         System.out.println(actualMessage);
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(actualMessage, expectedMessage, "Expected Message is not displayed");
+        softAssert.assertAll();
     }
 
     @DataProvider(name = "TestData1")
