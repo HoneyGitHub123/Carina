@@ -10,21 +10,13 @@ public abstract class LoginPageBase extends AbstractPage {
 
     public LoginPageBase(WebDriver driver) {
         super(driver);
-        setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
+        setPageOpeningStrategy(PageOpeningStrategy.BY_URL);
 
     }
 
-    public abstract void clickLoginLink();
-
-    public abstract LoginWindow getLoginWindow();
 
     public abstract String getMessage();
 
-
-    @Override
-    public void open() {
-        super.open();
-    }
 
 }
 

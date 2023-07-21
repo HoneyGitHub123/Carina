@@ -1,8 +1,6 @@
 package com.company.carina.demo.gui.components;
 
 import com.company.carina.demo.gui.pages.common.LoginPageBase;
-import com.company.carina.demo.gui.pages.common.ModelInfoPageBase;
-import com.company.carina.demo.gui.pages.desktop.LoginPage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
@@ -24,9 +22,19 @@ public class LoginWindow extends AbstractUIObject implements ICustomTypePageFact
         super(driver, searchContext);
     }
 
+    public void checkEmail(){
+        assertElementPresent(email);
+
+    }
 
     public void enterEmail(String userEmail) {
         email.type(userEmail);
+
+    }
+
+    public void checkPassword(){
+        assertElementPresent(password);
+
     }
 
     public void enterPassword(String userPassword) {
