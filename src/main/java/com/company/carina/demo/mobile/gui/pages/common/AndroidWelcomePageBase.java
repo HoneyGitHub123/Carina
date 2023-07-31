@@ -10,9 +10,8 @@ public abstract class AndroidWelcomePageBase extends AbstractPage {
 
     public abstract boolean isLogoPresent();
 
-    public abstract boolean isNextbtnPresent();
+    public abstract boolean isNextBtnPresent();
 
-    public abstract AndroidLoginPageBase clickNextbtn();
-
+    public abstract AndroidLoginPageBase clickNextBtn();
 
 }

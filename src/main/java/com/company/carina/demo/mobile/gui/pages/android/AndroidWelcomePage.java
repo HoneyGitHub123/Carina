@@ -13,7 +13,6 @@ public class AndroidWelcomePage extends AndroidWelcomePageBase {
     @FindBy(id = "carina_logo")
     private ExtendedWebElement logo;
 
-
     @FindBy(id = "next_button")
     private ExtendedWebElement nextBtn;
 
@@ -27,12 +26,12 @@ public class AndroidWelcomePage extends AndroidWelcomePageBase {
     }
 
     @Override
-    public boolean isNextbtnPresent() {
+    public boolean isNextBtnPresent() {
         return nextBtn.isElementPresent();
     }
 
     @Override
-    public AndroidLoginPageBase clickNextbtn() {
+    public AndroidLoginPageBase clickNextBtn() {
         nextBtn.click();
         return initPage(getDriver(), AndroidLoginPageBase.class);
     }

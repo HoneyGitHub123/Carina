@@ -7,9 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = AndroidLoginPageBase.class)
-
 public class AndroidLoginPage extends AndroidLoginPageBase {
-
 
     @FindBy(id = "name")
     private ExtendedWebElement nameInput;
@@ -31,11 +29,10 @@ public class AndroidLoginPage extends AndroidLoginPageBase {
 
     public AndroidLoginPage(WebDriver driver) {
         super(driver);
-
     }
 
     @Override
-    public boolean checkName() {
+    public boolean isNameFieldPresent() {
         return nameInput.isElementPresent();
     }
 
@@ -45,10 +42,14 @@ public class AndroidLoginPage extends AndroidLoginPageBase {
     }
 
     @Override
-    public boolean checkPassword() {
-        return passwordInput.isElementPresent();
+    public String isNameFieldValuePresent() {
+        return nameInput.getText();
     }
 
+    @Override
+    public boolean isPasswordFieldPresent() {
+        return passwordInput.isElementPresent();
+    }
 
     @Override
     public void enterPassword(String password) {
@@ -56,33 +57,38 @@ public class AndroidLoginPage extends AndroidLoginPageBase {
     }
 
     @Override
-    public boolean checkMaleRadiobtnPresent() {
+    public String isPasswordFieldValuePresent() {
+        return passwordInput.getText();
+    }
+
+    @Override
+    public boolean isMaleRadioBtnPresent() {
         return maleRadioBtn.isElementPresent();
     }
 
     @Override
-    public boolean isMaleRadiobtnChecked() {
+    public boolean isMaleRadioBtnChecked() {
         return maleRadioBtn.isChecked();
     }
 
     @Override
-    public boolean checkFemaleRadiobtnPresent() {
+    public boolean isFemaleRadioBtnPresent() {
         return femaleRadioBtn.isElementPresent();
     }
 
     @Override
-    public boolean isFemaleRadiobtnChecked() {
+    public boolean isFemaleRadioBtnChecked() {
         return femaleRadioBtn.isChecked();
     }
 
     @Override
-    public boolean selectMalebtn() {
+    public boolean selectMaleBtn() {
         maleRadioBtn.click();
         return maleRadioBtn.isChecked();
     }
 
     @Override
-    public boolean checkPrivacyBoxPresent() {
+    public boolean isPrivacyBoxPresent() {
         return privacyPolicyCheckbox.isElementPresent();
     }
 
@@ -97,9 +103,8 @@ public class AndroidLoginPage extends AndroidLoginPageBase {
     }
 
     @Override
-    public AndroidWebViewPageBase signUpbtn() {
+    public AndroidWebViewPageBase signUpBtn() {
         loginBtn.click();
         return initPage(getDriver(), AndroidWebViewPageBase.class);
-
     }
 }

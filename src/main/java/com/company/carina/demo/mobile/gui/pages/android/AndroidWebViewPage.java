@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = AndroidWebViewPageBase.class)
 public class AndroidWebViewPage extends AndroidWebViewPageBase {
 
-
     @FindBy(className="android.widget.TextView")
     private ExtendedWebElement webView;
 
