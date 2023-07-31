@@ -4,6 +4,7 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 
 public abstract class AndroidWelcomePageBase extends AbstractPage {
+
     public AndroidWelcomePageBase(WebDriver driver) {
         super(driver);
     }
